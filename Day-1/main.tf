@@ -17,7 +17,7 @@ output "main" {
 }
 
 
-resource "azurerm_network_interface" "example" {
+resource "azurerm_network_interface" "network-nic" {
   name                = "frontend-nic"
   location            = data.azurerm_resource_group.example.location
   resource_group_name = data.azurerm_resource_group.example.name
