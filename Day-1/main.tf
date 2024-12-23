@@ -30,25 +30,35 @@ resource "azurerm_network_interface" "network-nic" {
 }
 
 
-
-resource "azurerm_linux_virtual_machine" "example" {
-  name                = "example-machine"
+data "azurerm_image" "search" {
+  name                = "rhel9-devops-practice"
   resource_group_name = data.azurerm_resource_group.example.name
-  location            = data.azurerm_resource_group.example.location
-  size                = "Standard_B2s"
-  admin_username      = "adminuser"
-  admin_password      = "DevOps321321"
-  disable_password_authentication = false
-
-  network_interface_ids = [
-    azurerm_network_interface.network-nic.id
-  ]
-  source_image_id     = "subscriptions/12f9be95-f674-4dc3-8c29-d915cc4e1f8e/resourceGroups/iteration-1/providers/Microsoft.Compute/images/rhel9-devops-practice/latest"
-
-
-  os_disk {
-    caching              = "ReadWrite"
-    storage_account_type = "Standard_LRS"
-  }
-
 }
+
+output "id" {
+  value = data.azurerm_image.search.id
+}
+
+
+
+# resource "azurerm_linux_virtual_machine" "example" {
+#   name                = "example-machine"
+#   resource_group_name = data.azurerm_resource_group.example.name
+#   location            = data.azurerm_resource_group.example.location
+#   size                = "Standard_B2s"
+#   admin_username      = "adminuser"
+#   admin_password      = "DevOps321321"
+#   disable_password_authentication = false
+#
+#   network_interface_ids = [
+#     azurerm_network_interface.network-nic.id
+#   ]
+#   source_image_id     = "subscriptions/12f9be95-f674-4dc3-8c29-d915cc4e1f8e/resourceGroups/iteration-1/providers/Microsoft.Compute/images/rhel9-devops-practice/latest"
+#
+#
+#   os_disk {
+#     caching              = "ReadWrite"
+#     storage_account_type = "Standard_LRS"
+#   }
+#
+# }
