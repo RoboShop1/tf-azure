@@ -38,6 +38,8 @@ resource "azurerm_linux_virtual_machine" "example" {
   size                = "Standard_B2s"
   admin_username      = "adminuser"
   admin_password      = "DevOps321321"
+  disable_password_authentication = true
+
   network_interface_ids = [
     azurerm_network_interface.network-nic.id
   ]
