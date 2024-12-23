@@ -28,3 +28,24 @@ resource "azurerm_network_interface" "network-nic" {
     private_ip_address_allocation = "Dynamic"
   }
 }
+
+
+
+resource "azurerm_linux_virtual_machine" "example" {
+  name                = "example-machine"
+  resource_group_name = data.azurerm_resource_group.example.name
+  location            = data.azurerm_resource_group.example.location
+  size                = "Standard_B2s"
+  admin_username      = "adminuser"
+  admin_password      = "DevOps321321"
+  network_interface_ids = [
+    azurerm_network_interface.network-nic.id
+  ]
+  source_image_id     = "LDOTrail-a8215d2e-c9a8-43ef-904d-c8b1ffb29cf7"
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+}
