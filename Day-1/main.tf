@@ -29,14 +29,15 @@ resource "azurerm_network_interface" "network-nic" {
   }
 }
 
-
-data "azurerm_image" "search" {
-  name                = "rhel9-devops-practice"
-  resource_group_name = data.azurerm_resource_group.example.name
+data "azurerm_shared_image_version" "example" {
+  name                = "latest"                # Image version
+  image_name          = "rhel9-devops-practice"         # Name of the image
+  gallery_name        = "LDOTrail-a8215d2e-c9a8-43ef-904d-c8b1ffb29cf7"  # Name of the gallery
+  resource_group_name =  data.azurerm_resource_group.example.name # Resource group for the gallery
 }
 
 output "id" {
-  value = data.azurerm_image.search.id
+  value = data.azurerm_shared_image_version.example.id
 }
 
 
