@@ -30,7 +30,7 @@ resource "azurerm_network_interface" "network-nic" {
 }
 
 data "azurerm_shared_image_version" "example" {
-  name                = "latest"                # Image version
+  name                = "04.12.2024"                # Image version
   image_name          = "rhel9-devops-practice"         # Name of the image
   gallery_name        = "LDOTrail"  # Name of the gallery
   resource_group_name =  data.azurerm_resource_group.example.name # Resource group for the gallery
