@@ -5,7 +5,6 @@ provider "azurerm" {
   subscription_id = "12f9be95-f674-4dc3-8c29-d915cc4e1f8e"
 }
 
-# Persistence makes you Successful
 
 
 data "azurerm_resource_group" "example" {
@@ -54,3 +53,21 @@ resource "azurerm_linux_virtual_machine" "example" {
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
