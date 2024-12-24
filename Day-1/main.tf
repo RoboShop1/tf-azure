@@ -44,7 +44,7 @@ resource "azurerm_virtual_machine" "main" {
 
 
   storage_image_reference {
-    id = "/CommunityGalleries/ldotrail-a8215d2e-c9a8-43ef-904d-c8b1ffb29cf7/Images/rhel9-devops-practice/versions/04.12.2024"
+    id = "/subscriptions/7b6c642c-6e46-418f-b715-e01b2f871413/resourceGroups/trail1/providers/Microsoft.Compute/galleries/LDOTrail/images/rhel9-devops-practice/versions/04.12.2024"
   }
 
   storage_os_disk {
@@ -70,6 +70,7 @@ resource "azurerm_virtual_machine" "main" {
 
 
 
+/
 
 
 
