@@ -49,13 +49,13 @@ resource "azurerm_virtual_machine" "main" {
 
 
   storage_os_disk {
-    name              = "sample"
+    name              = "sample1"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = "sample"
+    computer_name  = "sample1"
     admin_username = "testadmin"
     admin_password = "Password1234!"
   }
@@ -63,7 +63,7 @@ resource "azurerm_virtual_machine" "main" {
     disable_password_authentication = false
   }
   tags = {
-    component = "sample"
+    component = "sample1"
   }
 }
 
