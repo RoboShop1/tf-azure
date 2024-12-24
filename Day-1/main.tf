@@ -81,7 +81,7 @@ resource "azurerm_linux_virtual_machine" "example" {
   network_interface_ids = [
     azurerm_network_interface.network-nic.id
   ]
-  source_image_id     = "/CommunityGalleries/ldotrail-a8215d2e-c9a8-43ef-904d-c8b1ffb29cf7/Images/rhel9-devops-practice"
+  source_image_id     = "/CommunityGalleries/ldotrail-a8215d2e-c9a8-43ef-904d-c8b1ffb29cf7/Images/rhel9-devops-practice/versions/03.12.2024"
 
 
   os_disk {
