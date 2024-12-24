@@ -9,7 +9,7 @@ provider "aws" {
   alias = "account-2"
 
   assume_role {
-    role_arn     = "arn:aws:iam::041445559784:role/another-assume-role"
+    role_arn     = "arn:aws:iam::041445559784:role/assume-role2"
     session_name = "terraform-session-account2"
   }
 }
