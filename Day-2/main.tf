@@ -60,6 +60,27 @@ resource "azurerm_network_security_group" "r-net-sg" {
   }
 }
 
+
+
+resource "azurerm_network_security_rule" "allow-http" {
+  name                        = "all-http"
+  priority                    = 100
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "80"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name = data.azurerm_resource_group.iteration-1.name
+  network_security_group_name = azurerm_network_security_group.r-net-sg.name
+}
+
+
+
+
+
+
 output "main_vpc" {
   value = azurerm_virtual_network.example.subnet.*.id
 }
@@ -122,6 +143,7 @@ resource "azurerm_linux_virtual_machine" "sample" {
   }
 
 }
+
 
 
 
