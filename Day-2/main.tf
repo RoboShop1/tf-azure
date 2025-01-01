@@ -155,8 +155,8 @@ resource "null_resource" "main" {
   provisioner "remote-exec" {
     connection {
       type     = "ssh"
-      user     = "testadmin"
-      password = "Password1234!"
+      user     = "azureuser"
+      password = "Chaithanya1812"
       host     = azurerm_public_ip.public_ip.ip_address
     }
 
