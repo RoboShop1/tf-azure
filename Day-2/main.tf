@@ -91,6 +91,11 @@ resource "azurerm_network_interface" "example" {
   }
 }
 
+resource "azurerm_network_interface_security_group_association" "sg-assocation" {
+  network_interface_id      = azurerm_network_interface.example.id
+  network_security_group_id = azurerm_network_security_group.r-net-sg.id
+}
+
 
 
 
