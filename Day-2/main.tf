@@ -1,4 +1,11 @@
-
+terraform {
+  required_providers {
+    null = {
+      source  = "hashicorp/null"
+      version = "3.2.2"
+    }
+  }
+}
 provider "azurerm" {
   features {}
 
@@ -143,6 +150,22 @@ resource "azurerm_linux_virtual_machine" "sample" {
   }
 
 }
+
+resource "null_resource" "main" {
+  provisioner "remote-exec" {
+    connection {
+      type     = "ssh"
+      user     = "testadmin"
+      password = "Password1234!"
+      host     = azurerm_public_ip.public_ip.ip_address
+    }
+
+    inline = [
+      "touch /tmp/c1"
+    ]
+  }
+}
+
 
 
 
