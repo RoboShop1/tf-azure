@@ -61,7 +61,7 @@ resource "azurerm_network_security_group" "r-net-sg" {
 }
 
 output "main_vpc" {
-  value = azurerm_virtual_network.example.subnet[*].name
+  value = azurerm_virtual_network.example.subnet[*].name[0]
 }
 
 
