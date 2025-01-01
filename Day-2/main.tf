@@ -66,6 +66,17 @@ output "main_vpc" {
 
 
 
+resource "azurerm_public_ip" "public_ip" {
+  name                = "r-publicip"
+  location            = data.azurerm_resource_group.iteration-1.location
+  resource_group_name = data.azurerm_resource_group.iteration-1.name
+  allocation_method   = "Static"
+
+  tags = {
+    environment = "Production"
+  }
+}
+
 resource "azurerm_network_interface" "example" {
   name                = "rnet-nic"
   location            = data.azurerm_resource_group.iteration-1.location
@@ -76,6 +87,7 @@ resource "azurerm_network_interface" "example" {
     name                          = "internal"
     subnet_id                     = azurerm_virtual_network.example.subnet.*.id[0]
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.public_ip.id
   }
 }
 
