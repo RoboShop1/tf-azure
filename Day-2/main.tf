@@ -66,7 +66,18 @@ output "main_vpc" {
 
 
 
+resource "azurerm_network_interface" "example" {
+  name                = "rnet-nic"
+  location            = data.azurerm_resource_group.iteration-1.location
+  resource_group_name = data.azurerm_resource_group.iteration-1.name
 
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_virtual_network.example.subnet.*.id[0]
+    private_ip_address_allocation = "Dynamic"
+  }
+}
 
 
 
