@@ -64,7 +64,7 @@ resource "azurerm_network_security_group" "r-net-sg" {
 
 resource "azurerm_network_security_rule" "allow-http" {
   name                        = "all-http"
-  priority                    = 100
+  priority                    = 110
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
