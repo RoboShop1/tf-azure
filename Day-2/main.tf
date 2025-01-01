@@ -102,8 +102,26 @@ resource "azurerm_network_interface_security_group_association" "sg-assocation" 
 
 
 
+resource "azurerm_linux_virtual_machine" "sample" {
+  name                = "example-machine"
+  location            = data.azurerm_resource_group.iteration-1.location
+  resource_group_name = data.azurerm_resource_group.iteration-1.name
 
+  size                            = "Standard_B2s"
+  admin_username                  = "adminuser"
+  admin_password                  = "Chaithanya1812"
+  disable_password_authentication = false
+  network_interface_ids = [
+    azurerm_network_interface.example.id,
+  ]
+  source_image_id = "/subscriptions/7b6c642c-6e46-418f-b715-e01b2f871413/resourceGroups/trail1/providers/Microsoft.Compute/galleries/LDOTrail/images/rhel9-devops-practice/versions/04.12.2024"
 
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+}
 
 
 
