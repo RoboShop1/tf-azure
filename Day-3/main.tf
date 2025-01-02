@@ -27,7 +27,7 @@ module "vm" {
   resource_group_name     = module.vnet.resource_group.name
   subnet_id               = <<EOF
 %{~ for name in module.vnet.virtual_network.subnet  ~}
-%{ if name[each.key] == each.key }${name["id"]}%{ endif }
+%{ if name["name"] == each.key }${name["id"]}%{ endif }
 %{~ endfor ~}
 EOF
   sg_ports                = each.key["sg_ports"]
