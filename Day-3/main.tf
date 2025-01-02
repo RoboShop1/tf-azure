@@ -30,7 +30,7 @@ module "vm" {
 %{ if name["name"] == each.key }${name["id"]}%{ endif }
 %{~ endfor ~}
 EOF
-  sg_ports                = each.key["sg_ports"]
+  sg_ports                = each.value["sg_ports"]
 
 
 }
