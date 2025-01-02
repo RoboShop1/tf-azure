@@ -3,5 +3,5 @@ module "vnet" {
 }
 
 output "r_output" {
-  value = module.vnet.resource_group
+  value = module.vnet
 }
