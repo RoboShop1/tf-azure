@@ -10,7 +10,7 @@ output "vnet" {
 output "sample" {
   value = <<EOF
 %{~ for name in module.vnet.virtual_network.subnet  ~}
-%{ if name["name"] == "web" }${name["id"]}%{ endif }
+%{ if ${name["name"]} == "web" }${name["id"]}%{ endif }
 %{~ endfor ~}
 EOF
 }
@@ -25,7 +25,11 @@ EOF
 #   resource_group_location = module.vnet.resource_group.location
 #   component               = each.key
 #   resource_group_name     = module.vnet.resource_group.name
-#   subnet_id               = module.vnet.virtual_network.subnet.*.id[0]
+#   subnet_id               = <<EOF
+# %{~ for name in module.vnet.virtual_network.subnet  ~}
+# %{ if name[each.value] == "web" }${name["id"]}%{ endif }
+# %{~ endfor ~}
+# EOF
 #   sg_ports                = each.key["sg_ports"]
 #
 #
