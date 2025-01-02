@@ -10,7 +10,7 @@ output "vnet" {
 output "sample" {
   value = <<EOF
 %{~ for name in module.vnet.virtual_network.subnet  ~}
-${name["name"]},
+%{ if name["name"] == "web" }${name["id"]}%{ endif }
 %{~ endfor ~}
 EOF
 }
