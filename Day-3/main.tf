@@ -1,5 +1,5 @@
 module "vnet" {
-  source = "../modules/vnet"
+  source = "modules/vnet"
 }
 
 output "r_output" {
