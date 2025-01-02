@@ -6,6 +6,15 @@ output "vnet" {
   value = module.vnet.virtual_network.subnet.*.id[0]
 }
 
+
+output "sample" {
+  value = <<EOF
+%{~ for name in module.vnet.virtual_network.subnet  ~}
+${name["name"]}
+%{~ endfor ~}
+EOF
+}
+
 # module "vm" {
 #
 #   depends_on = [module.vnet]
