@@ -42,8 +42,6 @@ resource "azurerm_virtual_network" "example" {
   }
 }
 
-
-
 resource "azurerm_network_security_group" "r-net-sg" {
   name                = "r-network"
   location            = data.azurerm_resource_group.iteration-1.location
@@ -66,8 +64,6 @@ resource "azurerm_network_security_group" "r-net-sg" {
     environment = "r-net-sg"
   }
 }
-
-
 
 resource "azurerm_network_security_rule" "allow-http" {
   name                        = "all-http"
