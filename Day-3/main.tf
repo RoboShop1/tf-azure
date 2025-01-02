@@ -3,7 +3,7 @@ module "vnet" {
 }
 
 output "vnet" {
-  value = module.vnet.virtual_network
+  value = module.vnet.virtual_network.subnet
 }
 
 # module "vm" {
