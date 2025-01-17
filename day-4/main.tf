@@ -33,6 +33,17 @@ resource "azurerm_kubernetes_cluster" "main" {
   }
 }
 
+resource "azurerm_kubernetes_cluster_node_pool" "pool-1" {
+  name                  = "internal"
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.main.id
+  vm_size               = "Standard_DS2_v2"
+  node_count            = 1
+
+  tags = {
+    Environment = "internal-dev"
+  }
+}
+
 
 resource "null_resource" "get-kubeconifg" {
   depends_on = [azurerm_kubernetes_cluster.main]
@@ -43,3 +54,7 @@ resource "null_resource" "get-kubeconifg" {
 EOT
   }
 }
+
+
+
+
