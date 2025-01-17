@@ -1,3 +1,4 @@
+
 data "azurerm_resource_group" "main" {
   name = "iteration-1"
 }
@@ -29,5 +30,16 @@ resource "azurerm_kubernetes_cluster" "main" {
 
   tags = {
     Environment = "Production"
+  }
+}
+
+
+resource "null_resource" "get-kubeconifg" {
+  depends_on = [azurerm_kubernetes_cluster.main]
+
+  provisioner "local-exec" {
+    command = <<EOT
+    az aks get-credentials --resource-group ${data.azurerm_resource_group.main.name} --name ${azurerm_kubernetes_cluster.main.name}
+EOT
   }
 }
