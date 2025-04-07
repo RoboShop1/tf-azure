@@ -64,6 +64,7 @@ resource "azurerm_linux_virtual_machine" "public" {
 
 
 resource "azurerm_network_interface" "private" {
+  count               = var.location == "private" ? 1 : 0
   location            = data.azurerm_resource_group.example.location
   resource_group_name = data.azurerm_resource_group.example.name
   name                = "${var.instance}-nic"
@@ -78,7 +79,7 @@ resource "azurerm_network_interface" "private" {
 }
 
 resource "azurerm_linux_virtual_machine" "private" {
-
+  count               = var.location == "private" ? 1 : 0
   name                = "${var.instance}-machine"
   location            = data.azurerm_resource_group.example.location
   resource_group_name = data.azurerm_resource_group.example.name
@@ -89,7 +90,7 @@ resource "azurerm_linux_virtual_machine" "private" {
   disable_password_authentication = false
 
   network_interface_ids = [
-    azurerm_network_interface.private.id,
+    azurerm_network_interface.private[0].id,
   ]
 
   os_disk {
@@ -112,7 +113,6 @@ resource "azurerm_linux_virtual_machine" "private" {
 
 
 variable "location" {
-  default = "private"
 }
 variable "instance" {}
 variable "subnet_id" {}
