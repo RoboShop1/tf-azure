@@ -5,9 +5,21 @@ resource "azurerm_network_security_group" "public" {
 
   security_rule {
     name                       = "allow-all"
-    priority                   = 100
+    priority                   = 110
     direction                  = "Inbound"
     access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
+    name                       = "deny-all"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Deny"
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "*"
@@ -28,13 +40,25 @@ resource "azurerm_network_security_group" "app" {
 
   security_rule {
     name                       = "allow-all-public-subnet"
-    priority                   = 100
+    priority                   = 110
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
     source_address_prefix      = "10.0.1.0/24"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
+    name                       = "deny-all"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Deny"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
 
@@ -51,7 +75,7 @@ resource "azurerm_network_security_group" "db" {
 
   security_rule {
     name                       = "allow-all-app-subnet"
-    priority                   = 100
+    priority                   = 110
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -60,6 +84,19 @@ resource "azurerm_network_security_group" "db" {
     source_address_prefix      = "10.0.2.0/24"
    destination_address_prefix = "*"
   }
+
+  security_rule {
+    name                       = "deny-all"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Deny"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
 
   tags = {
     environment = "public"
