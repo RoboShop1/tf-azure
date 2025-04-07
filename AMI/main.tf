@@ -6,7 +6,7 @@ module "vnet" {
 
 
 output "all" {
-  value = module.vnet
+  value = lookup(lookup(module.vnet,"network",null),"subnet",null)
 }
 
 
