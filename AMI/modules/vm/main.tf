@@ -109,6 +109,8 @@ resource "azurerm_linux_virtual_machine" "public" {
 
 
 
-variable "location" {}
+variable "location" {
+  default = null
+}
 variable "instance" {}
 variable "subnet_id" {}
