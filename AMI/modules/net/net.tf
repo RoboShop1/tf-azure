@@ -5,7 +5,7 @@ resource "azurerm_network_security_group" "public" {
 
   security_rule {
     name                       = "allow-all"
-    priority                   = 110
+    priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -17,7 +17,7 @@ resource "azurerm_network_security_group" "public" {
 
   security_rule {
     name                       = "deny-all"
-    priority                   = 100
+    priority                   = "4096"
     direction                  = "Inbound"
     access                     = "Deny"
     protocol                   = "Tcp"
@@ -40,7 +40,7 @@ resource "azurerm_network_security_group" "app" {
 
   security_rule {
     name                       = "allow-all-public-subnet"
-    priority                   = 110
+    priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -52,7 +52,7 @@ resource "azurerm_network_security_group" "app" {
 
   security_rule {
     name                       = "deny-all"
-    priority                   = 100
+    priority                   = "4096"
     direction                  = "Inbound"
     access                     = "Deny"
     protocol                   = "Tcp"
@@ -75,7 +75,7 @@ resource "azurerm_network_security_group" "db" {
 
   security_rule {
     name                       = "allow-all-app-subnet"
-    priority                   = 110
+    priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -87,7 +87,7 @@ resource "azurerm_network_security_group" "db" {
 
   security_rule {
     name                       = "deny-all"
-    priority                   = 100
+    priority                   = "4096"
     direction                  = "Inbound"
     access                     = "Deny"
     protocol                   = "Tcp"
