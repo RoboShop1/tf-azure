@@ -1,10 +1,13 @@
 
 module "vnet" {
-  source = "./"
+  source = "./modules/net"
 }
 
 
 
+output "all" {
+  value = module.vnet
+}
 
 
 
