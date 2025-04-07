@@ -34,7 +34,7 @@ resource "azurerm_network_security_group" "app" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = ["10.0.1.0/24"]
+    source_address_prefix      = "10.0.1.0/24"
     destination_address_prefix = "*"
   }
 
@@ -57,8 +57,8 @@ resource "azurerm_network_security_group" "db" {
     protocol                   = "Tcp"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = ["10.0.2.0/24"]
-    destination_address_prefix = "*"
+    source_address_prefix      = "10.0.2.0/24"
+   destination_address_prefix = "*"
   }
 
   tags = {
