@@ -5,8 +5,8 @@ module "vnet" {
 
 
 
-output "all" {
-  value = lookup(lookup(module.vnet,"network",null),"subnet",null)
+output "subnets" {
+  value = { for v in lookup(lookup(module.vnet,"network",null),"subnet",null): v.name => v.id }
 }
 
 
