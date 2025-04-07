@@ -21,9 +21,9 @@ module "public_vm" {
 }
 
 
-module "private_vms" {
-  for_each = toset(["app","db"])
-  source    = "./modules/vm"
-  instance  = each.key
-  subnet_id = lookup(local.subnets,each.key,null)
-}
+# module "private_vms" {
+#   for_each = toset(["app","db"])
+#   source    = "./modules/vm"
+#   instance  = each.key
+#   subnet_id = lookup(local.subnets,each.key,null)
+# }
