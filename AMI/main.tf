@@ -27,7 +27,3 @@ module "private_vms" {
   instance  = each.key
   subnet_id = lookup(local.subnets,each.key,null)
 }
-
-variable "location" {}
-variable "instance" {}
-variable "subnet_id" {}
