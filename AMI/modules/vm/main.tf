@@ -38,6 +38,7 @@ resource "azurerm_linux_virtual_machine" "public" {
   admin_password                  = "Chaithanya1812"
   disable_password_authentication = false
 
+  source_image_id = "/Subscriptions/12f9be95-f674-4dc3-8c29-d915cc4e1f8e/Providers/Microsoft.Compute/Locations/ukwest/Publishers/RedHat/ArtifactTypes/VMImage/Offers/RHEL/Skus/9_2"
   network_interface_ids = [
     azurerm_network_interface.public[0].id,
   ]
@@ -48,12 +49,6 @@ resource "azurerm_linux_virtual_machine" "public" {
     storage_account_type = "Standard_LRS"
   }
 
-  source_image_reference {
-    publisher = "RedHat"
-    offer     = "RHEL"
-    sku       = "9_2"
-    version   = "latest"
-  }
 
 }
 
@@ -75,7 +70,7 @@ resource "azurerm_network_interface" "private" {
 
 }
 
-resource "azurerm_linux_virtual_machine" "public" {
+resource "azurerm_linux_virtual_machine" "private" {
 
   name                = "${var.instance}-machine"
   location            = data.azurerm_resource_group.example.location
