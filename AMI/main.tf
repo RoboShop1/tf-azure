@@ -13,12 +13,12 @@ output "subnets" {
 }
 
 
-# module "public_vm" {
-#   source    = "./modules/vm"
-#   location  = "public"
-#   instance  = "public"
-#   subnet_id = lookup(local.subnets,"public",null)
-# }
+module "public_vm" {
+  source    = "./modules/vm"
+  location  = "public"
+  instance  = "public"
+  subnet_id = lookup(local.subnets,"public",null)
+}
 
 
 # module "private_vms" {

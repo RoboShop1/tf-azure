@@ -112,7 +112,7 @@ resource "azurerm_linux_virtual_machine" "private" {
 
 
 variable "location" {
-  default = null
+  default = "private"
 }
 variable "instance" {}
 variable "subnet_id" {}
