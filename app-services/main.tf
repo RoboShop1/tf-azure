@@ -93,3 +93,27 @@ docker_registry_url = "https://index.docker.io"
 
 }
 }
+
+resource "azurerm_linux_web_app" "cart" {
+  name                = "rcart"
+  resource_group_name = data.azurerm_resource_group.example.name
+  location            = data.azurerm_resource_group.example.location
+
+  service_plan_id     = azurerm_app_service_plan.example.id
+  public_network_access_enabled = true
+
+  app_settings = {
+    WEBSITES_PORT = "8080"
+    REDIS_HOST = "3.82.198.41"
+    CATALOGUE_HOST =  "rcatalogue.azurewebsites.net"
+    CATALOGUE_PORT = "80"
+  }
+
+  site_config {
+    application_stack {
+      docker_image_name = "chaitu1812/cart-rhel9"
+      docker_registry_url = "https://index.docker.io"
+    }
+
+  }
+}
