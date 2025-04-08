@@ -6,6 +6,7 @@ resource "azurerm_app_service_plan" "example" {
   name                = "api-appserviceplan-basic"
   resource_group_name = data.azurerm_resource_group.example.name
   location            = data.azurerm_resource_group.example.location
+  kind                = "Linux"
   sku {
     tier = "Basic"
     size = "B2"
