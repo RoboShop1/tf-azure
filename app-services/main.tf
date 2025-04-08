@@ -40,3 +40,31 @@ resource "azurerm_linux_web_app" "nginx" {
 
 }
 
+###
+MONGO: "true"
+MONGO_URL: "mongodb://mongodb:27017/catalogue"
+
+
+
+resource "azurerm_linux_web_app" "catalogue" {
+  name                = "rcatalogue"
+  resource_group_name = data.azurerm_resource_group.example.name
+  location            = data.azurerm_resource_group.example.location
+
+  service_plan_id     = azurerm_app_service_plan.example.id
+  public_network_access_enabled = true
+
+  app_settings = {
+    MONGO = "true"
+    MONGO_URL =  "mongodb://3.82.198.41:27017/catalogue"
+  }
+
+  site_config {
+    application_stack {
+      docker_image_name = "chaitu1812/catalogue-rhel9"
+      docker_registry_url = "https://index.docker.io"
+    }
+
+  }
+
+}
