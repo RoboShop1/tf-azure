@@ -56,6 +56,7 @@ resource "azurerm_linux_web_app" "catalogue" {
   app_settings = {
     MONGO = "true"
     MONGO_URL =  "mongodb://3.82.198.41:27017/catalogue"
+    WEBSITES_PORT = "8080"
   }
 
   site_config {
