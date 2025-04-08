@@ -32,7 +32,7 @@ resource "azurerm_linux_web_app" "nginx" {
 
   site_config {
     application_stack {
-      docker_image_name = "chaitu1812/frontend-rhel9"
+      docker_image_name = "chaitu1812/rsample"
       docker_registry_url = "https://index.docker.io"
     }
 
