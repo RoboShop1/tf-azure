@@ -74,7 +74,7 @@ resource "azurerm_linux_web_app" "catalogue" {
 MONGO_URL: "mongodb://mongodb:27017/users"*/
 
 
-resource "azurerm_linux_web_app" "catalogue" {
+resource "azurerm_linux_web_app" "user" {
 name                = "ruser"
 resource_group_name = data.azurerm_resource_group.example.name
 location            = data.azurerm_resource_group.example.location
