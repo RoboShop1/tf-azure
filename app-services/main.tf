@@ -13,7 +13,7 @@ resource "azurerm_app_service_plan" "example" {
 }
 
 resource "azurerm_linux_web_app" "nginx" {
-  name                = "r-frontend"
+  name                = "rfrontend"
   resource_group_name = data.azurerm_resource_group.example.name
   location            = data.azurerm_resource_group.example.location
 
