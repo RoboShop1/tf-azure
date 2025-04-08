@@ -105,7 +105,7 @@ resource "azurerm_linux_web_app" "cart" {
     WEBSITES_PORT = "8080"
     REDIS_HOST = "3.82.198.41"
     CATALOGUE_HOST =  "rcatalogue.azurewebsites.net"
-    CATALOGUE_PORT = "80"
+    CATALOGUE_PORT = "8080"
   }
 
   site_config {
