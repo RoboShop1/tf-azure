@@ -24,7 +24,7 @@ resource "azurerm_linux_web_app" "nginx" {
 
   app_settings = {
     catalogue = "rcatalogue.azurewebsites.net"
-    user      = "localhost"
+    user      = "ruser.azurewebsites.net"
     cart      = "localhost"
     shipping  = "localhost"
     payment   = "localhost"
