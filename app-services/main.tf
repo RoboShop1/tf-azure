@@ -23,7 +23,7 @@ resource "azurerm_linux_web_app" "nginx" {
   public_network_access_enabled = true
 
   app_settings = {
-    catalogue = "localhost"
+    catalogue = "rcatalogue.azurewebsites.net"
     user      = "localhost"
     cart      = "localhost"
     shipping  = "localhost"
