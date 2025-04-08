@@ -28,6 +28,7 @@ resource "azurerm_linux_web_app" "nginx" {
     cart      = "localhost"
     shipping  = "localhost"
     payment   = "localhost"
+    name      = "hello"
   }
 
   site_config {
