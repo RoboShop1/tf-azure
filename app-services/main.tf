@@ -70,9 +70,6 @@ resource "azurerm_linux_web_app" "catalogue" {
 }
 
 
-/*REDIS_URL: redis://redis:6379
-MONGO_URL: "mongodb://mongodb:27017/users"*/
-
 
 resource "azurerm_linux_web_app" "user" {
 name                = "ruser"
