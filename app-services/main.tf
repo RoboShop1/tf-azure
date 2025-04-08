@@ -10,7 +10,7 @@ resource "azurerm_service_plan" "example" {
   sku_name            = "B2"
 }
 
-resource "azurerm_linux_web_app" "example" {
+resource "azurerm_linux_web_app" "nginx" {
   name                = "nginx1"
   resource_group_name = data.azurerm_resource_group.example.name
   location            = data.azurerm_resource_group.example.location
