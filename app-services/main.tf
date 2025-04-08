@@ -82,6 +82,7 @@ public_network_access_enabled = true
 app_settings = {
   REDIS_URL: "redis://3.82.198.41:6379"
   MONGO_URL: "mongodb://3.82.198.41:27017/users"
+  WEBSITES_PORT = "8080"
 }
 
 site_config {
