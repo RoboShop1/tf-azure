@@ -41,10 +41,6 @@ resource "azurerm_linux_web_app" "nginx" {
 }
 
 
-
-
-
-
 resource "azurerm_linux_web_app" "catalogue" {
   name                = "rcatalogue"
   resource_group_name = data.azurerm_resource_group.example.name
