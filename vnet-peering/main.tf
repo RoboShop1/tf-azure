@@ -43,3 +43,7 @@ output "dev_ip" {
 output "prod_ip" {
   value = module.server-prod
 }
+
+module "vnet-peering" {
+  source = "./modules/v-peering"
+}
