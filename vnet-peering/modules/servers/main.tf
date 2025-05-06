@@ -64,3 +64,12 @@ resource "azurerm_linux_virtual_machine" "public" {
   }
 
 }
+
+
+output "public_ip" {
+  value = azurerm_linux_virtual_machine.public.public_ip_address
+}
+
+output "private_ip" {
+  value = azurerm_linux_virtual_machine.public.private_ip_address
+}

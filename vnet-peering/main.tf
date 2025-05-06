@@ -35,3 +35,11 @@ module "server-prod" {
   instance = "prod"
   subnet_id = "/subscriptions/12f9be95-f674-4dc3-8c29-d915cc4e1f8e/resourceGroups/iteration-1/providers/Microsoft.Network/virtualNetworks/prod-network/subnets/subnet2"
 }
+
+output "dev_ip" {
+  value = module.server-dev
+}
+
+output "prod_ip" {
+  value = module.server-prod
+}
