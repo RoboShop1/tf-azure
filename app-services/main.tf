@@ -89,6 +89,9 @@ docker_registry_url = "https://index.docker.io"
 }
 }
 
+
+
+
 resource "azurerm_linux_web_app" "cart" {
   name                = "rcart"
   resource_group_name = data.azurerm_resource_group.example.name
