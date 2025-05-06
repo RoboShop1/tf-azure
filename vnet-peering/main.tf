@@ -22,6 +22,9 @@ module "prod-net" {
   subnet2_range = "10.2.2.0/24"
 }
 
+output "prod-vnet" {
+  value = module.prod-net
+}
 
 
 module "server-dev" {
@@ -44,6 +47,8 @@ output "prod_ip" {
   value = module.server-prod
 }
 
-module "vnet-peering" {
-  source = "./modules/v-peering"
-}
+
+
+# module "vnet-peering" {
+#   source = "./modules/v-peering"
+# }

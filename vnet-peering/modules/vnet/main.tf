@@ -56,3 +56,7 @@ resource "azurerm_virtual_network" "dev" {
   }
 }
 
+output "one" {
+  value = azurerm_virtual_network.dev
+}
+
