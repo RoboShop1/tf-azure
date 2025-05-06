@@ -49,6 +49,6 @@ output "prod_ip" {
 
 
 
-# module "vnet-peering" {
-#   source = "./modules/v-peering"
-# }
+module "vnet-peering" {
+  source = "./modules/v-peering"
+}
