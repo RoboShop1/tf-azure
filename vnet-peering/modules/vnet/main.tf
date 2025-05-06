@@ -48,6 +48,7 @@ resource "azurerm_virtual_network" "dev" {
   subnet {
     name             = "subnet2"
     address_prefixes = [var.subnet2_range]
+    security_group   = azurerm_network_security_group.example.id
   }
 
   tags = {
