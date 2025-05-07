@@ -15,6 +15,7 @@ module "dev-net" {
 
 
 module "server-dev1" {
+  depends_on = [module.dev-net]
   source = "./modules/servers"
   instance = "dev1"
   subnet_id = "/subscriptions/12f9be95-f674-4dc3-8c29-d915cc4e1f8e/resourceGroups/iteration-1/providers/Microsoft.Network/virtualNetworks/dev-network/subnets/subnet1"
@@ -25,6 +26,7 @@ output "dev1" {
 }
 
 module "server-dev2" {
+  depends_on = [module.dev-net]
   source = "./modules/servers"
   instance = "dev2"
   subnet_id = "/subscriptions/12f9be95-f674-4dc3-8c29-d915cc4e1f8e/resourceGroups/iteration-1/providers/Microsoft.Network/virtualNetworks/dev-network/subnets/subnet1"
