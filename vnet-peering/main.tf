@@ -33,7 +33,7 @@ module "server-dev2" {
 }
 
 output "dev2" {
-  value = module.server-dev1
+  value = module.server-dev2
 }
 
 
