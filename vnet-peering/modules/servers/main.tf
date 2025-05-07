@@ -27,7 +27,7 @@ resource "azurerm_network_security_group" "main" {
 
 
   security_rule {
-    name                       = "test123"
+    name                       = "http"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
@@ -41,7 +41,7 @@ resource "azurerm_network_security_group" "main" {
 
 
   security_rule {
-    name                       = "test123"
+    name                       = "ssh"
     priority                   = 110
     direction                  = "Inbound"
     access                     = "Allow"
