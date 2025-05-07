@@ -63,6 +63,7 @@ resource "azurerm_linux_virtual_machine" "public" {
     storage_account_type = "Standard_LRS"
   }
 
+
 }
 
 

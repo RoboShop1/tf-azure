@@ -30,7 +30,6 @@ resource "azurerm_network_security_group" "example" {
     environment = "${var.network}-sg"
   }
 
-
 }
 
 resource "azurerm_virtual_network" "dev" {
