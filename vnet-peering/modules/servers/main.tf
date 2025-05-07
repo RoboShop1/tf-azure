@@ -19,6 +19,30 @@ resource "azurerm_public_ip" "main" {
 }
 
 
+
+resource "azurerm_network_security_group" "main" {
+  name                = "${var.instance}-Group1"
+  location            = data.azurerm_resource_group.example.location
+  resource_group_name = data.azurerm_resource_group.example.name
+
+
+  security_rule {
+    name                       = "test123"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  tags = {
+    environment = "${var.instance}-Group1"
+  }
+}
+
 resource "azurerm_network_interface" "public" {
   location            = data.azurerm_resource_group.example.location
   resource_group_name = data.azurerm_resource_group.example.name
@@ -31,6 +55,11 @@ resource "azurerm_network_interface" "public" {
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.main.id
   }
+}
+
+resource "azurerm_network_interface_security_group_association" "example" {
+  network_interface_id      = azurerm_network_interface.public.id
+  network_security_group_id = azurerm_network_security_group.main.id
 }
 
 
