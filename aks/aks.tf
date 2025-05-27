@@ -23,6 +23,9 @@ resource "azurerm_kubernetes_cluster" "example" {
     type = "SystemAssigned"
   }
 
+
+  oidc_issuer_enabled = true
+  workload_identity_enabled = true
   tags = {
     Environment = "Production"
   }
