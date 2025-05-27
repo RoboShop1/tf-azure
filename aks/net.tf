@@ -25,6 +25,8 @@ resource "azurerm_virtual_network" "v_net" {
 }
 
 
+
+
 # output "all" {
 #   value = { for i in azurerm_virtual_network.v_net.subnet: i["name"] => i["id"] }
 # }

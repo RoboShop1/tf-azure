@@ -28,3 +28,16 @@ resource "azurerm_kubernetes_cluster" "example" {
   }
 }
 
+
+resource "azurerm_kubernetes_cluster_node_pool" "example" {
+  name                  = "one"
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.example.id
+  vm_size               = "Standard_DS2_v2"
+  node_count            = 1
+  vnet_subnet_id = lookup(local.subnets, "eks",null )
+
+  tags = {
+    Environment = "Production"
+  }
+}
+
