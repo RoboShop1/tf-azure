@@ -8,5 +8,5 @@ spec:
   serviceAccountName: vault
   containers:
     - name: c2
-      image: bitnami/azure-cli:latest
+      image: redhat/ubi8
       command: ["sleep","10000s"]
