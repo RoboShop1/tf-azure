@@ -1,4 +1,12 @@
 apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vault
+  annotations:
+    azure.workload.identity/client-id: "242f2887-a31c-43ff-a162-ee21c34a91fa"
+
+---
+apiVersion: v1
 kind: Pod
 metadata:
   name: my-app-workload-identity-pod
@@ -8,5 +16,4 @@ spec:
   serviceAccountName: vault
   containers:
     - name: c2
-      image: redhat/ubi8
-      command: ["sleep","10000s"]
+      image: docker.io/chaitu1812/az-cli
