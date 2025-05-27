@@ -10,3 +10,13 @@ resource "azurerm_role_assignment" "vault-identity-role" {
   scope        = "/subscriptions/12f9be95-f674-4dc3-8c29-d915cc4e1f8e/resourceGroups/iteration-1/providers/Microsoft.KeyVault/vaults/roboshop3"
   role_definition_name = "Key Vault Secrets User"
 }
+
+
+resource "azurerm_federated_identity_credential" "example" {
+  name                = "my-vault-credential"
+  resource_group_name = data.azurerm_resource_group.example.name
+  parent_id           = azurerm_user_assigned_identity.vault-identity.id
+  issuer              = azurerm_kubernetes_cluster.example.oidc_issuer_url
+  subject             = "system:serviceaccount:default:vault"
+  audience            = ["api://AzureADTokenExchange"]
+}
