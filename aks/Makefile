@@ -1,6 +1,6 @@
 init:
-	terrafrom init
+	terraform init
 apply:
 	git pull
-	terrafrom apply -auto-approve
+	terraform apply -auto-approve
 
