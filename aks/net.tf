@@ -26,7 +26,7 @@ resource "azurerm_virtual_network" "v_net" {
 
 
 output "all" {
-  value = azurerm_virtual_network.v_net
+  value = azurerm_virtual_network.v_net.subnet
 }
 
 # output "all" {
