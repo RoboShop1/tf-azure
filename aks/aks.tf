@@ -7,6 +7,8 @@ resource "azurerm_kubernetes_cluster" "example" {
   network_profile {
     network_plugin = "azure"
     network_policy = "azure"
+    service_cidr   = "10.100.0.0/24"
+    dns_service_ip = "10.100.0.10"
 
   }
 
