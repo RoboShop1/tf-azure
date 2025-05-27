@@ -44,3 +44,9 @@ resource "azurerm_kubernetes_cluster_node_pool" "example" {
   }
 }
 
+
+
+
+output "odic_url" {
+  value = azurerm_kubernetes_cluster.example.oidc_issuer_url
+}
