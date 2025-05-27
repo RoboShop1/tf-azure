@@ -1,7 +1,8 @@
 resource "azurerm_kubernetes_cluster" "example" {
-  name                = "example-aks1"
+  name                = "dev-eks"
   location            = data.azurerm_resource_group.example.location
   resource_group_name = data.azurerm_resource_group.example.name
+  dns_prefix          = "dev-eks"
 
   network_profile {
     network_plugin = "azure"
