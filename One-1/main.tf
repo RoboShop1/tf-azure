@@ -19,6 +19,9 @@ resource "azurerm_network_security_group" "main" {
   }
 }
 
+
+
+
 resource "azurerm_virtual_network" "network" {
   name                = "example-network"
   location            = data.azurerm_resource_group.example.location
@@ -40,3 +43,13 @@ resource "azurerm_virtual_network" "network" {
     environment = "Production"
   }
 }
+
+
+
+resource "azurerm_subnet_network_security_group_association" "subnet-sg-assocation" {
+  subnet_id                 = { for i in azurerm_virtual_network.network.subnet: i.name => i.id if i.name == "subnet1" }
+  network_security_group_id = azurerm_network_security_group.main.id
+}
+
+
+
