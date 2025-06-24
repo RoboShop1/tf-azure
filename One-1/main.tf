@@ -47,7 +47,7 @@ resource "azurerm_virtual_network" "network" {
 
 
 resource "azurerm_subnet_network_security_group_association" "subnet-sg-assocation" {
-  subnet_id                 = { for i in azurerm_virtual_network.network.subnet: i.name => i.id if i.name == "subnet1" }
+  subnet_id                 = { for i in azurerm_virtual_network.network.subnet: i.name => i.id if i.name == "subnet1" }["subnet1"]
   network_security_group_id = azurerm_network_security_group.main.id
 }
 
