@@ -31,7 +31,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   name                = "example-machine"
   location            = data.azurerm_resource_group.example.location
   resource_group_name = data.azurerm_resource_group.example.name
-  size                = "Standard_B2ls_v2"
+  size                = "Standard_B2s"
   admin_username      = "azureuser"
   disable_password_authentication = false
   admin_password                   = "Chaithanya1812"
@@ -41,8 +41,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
   ]
 
   os_disk {
+    name                 = "sample"
     caching              = "ReadWrite"
-    storage_account_type = "Standard_B2s"
+    storage_account_type = "Standard_LRS"
   }
 
   source_image_reference {
