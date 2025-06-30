@@ -8,9 +8,10 @@ resource "azurerm_public_ip" "main" {
   tags = {
     component = "one-ip"
   }
-
-
 }
+
+
+
 resource "azurerm_network_interface" "net" {
   name                = "example-nic"
   location            = data.azurerm_resource_group.example.location
