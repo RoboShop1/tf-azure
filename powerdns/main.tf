@@ -9,7 +9,8 @@ terraform {
 
 provider "powerdns" {
   api_key    = "supersecretapikey"
-  server_url = "https://172.31.23.218:8081/"  # Added /api/v1
+  server_url = "https://172.31.23.218:8081/"
+  insecure_https = true# Added /api/v1
 }
 
 resource "powerdns_record" "www" {
