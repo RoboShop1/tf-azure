@@ -14,7 +14,7 @@ provider "powerdns" {
 
 resource "powerdns_record" "www" {
   zone    = "spark.in."
-  name    = "www.spark.in."
+  name    = "chaitu.spark.in."
   type    = "A"
   ttl     = 300
   records = ["192.168.0.11"]
