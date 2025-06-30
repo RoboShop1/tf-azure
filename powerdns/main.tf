@@ -28,9 +28,8 @@ resource "null_resource" "run" {
   depends_on = [powerdns_record.www]
 
   triggers = {
-    # Triggers when any of these change:
     record_id  = "${powerdns_record.www.zone}:${powerdns_record.www.name}:${powerdns_record.www.type}"
-    record_content = join(",", powerdns_record.www.records)  # Sensitive to IP changes
+    record_content = join(",", powerdns_record.www.records)
     record_ttl = powerdns_record.www.ttl
   }
 
