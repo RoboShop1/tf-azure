@@ -9,7 +9,7 @@ terraform {
 
 provider "powerdns" {
   api_key    = "supersecretapikey"
-  server_url = "http://172.31.23.218:8081"
+  server_url = "http://localhost:8081"
 }
 
 resource "powerdns_record" "www" {
