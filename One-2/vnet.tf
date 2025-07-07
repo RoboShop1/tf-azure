@@ -37,8 +37,9 @@ resource "azurerm_network_security_group" "main" {
     access                     = "Allow"
     protocol                   = "Tcp"
     source_address_prefixes    = ["205.254.168.171/32"]
+    source_port_range          = "*"
     destination_port_range     = "80"
-    source_address_prefix      = "*"
+    #source_address_prefix      = "*"
     destination_application_security_group_ids = [azurerm_application_security_group.main.id]
   }
 
