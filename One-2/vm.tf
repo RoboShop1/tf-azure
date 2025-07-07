@@ -46,8 +46,13 @@ resource "azurerm_linux_virtual_machine" "vm" {
     storage_account_type = "Standard_LRS"
   }
 
+  # identity {
+  #   type = "SystemAssigned"
+  # }
+
   identity {
-    type = "SystemAssigned"
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.example.id]
   }
 
   source_image_reference {
@@ -59,6 +64,18 @@ resource "azurerm_linux_virtual_machine" "vm" {
 }
 
 
+
+resource "azurerm_user_assigned_identity" "example" {
+  location            = data.azurerm_resource_group.example.location
+  name                = "identity1"
+  resource_group_name = data.azurerm_resource_group.example.name
+}
+
+
+
+output "id" {
+  value = azurerm_user_assigned_identity.example
+}
 
 
 
