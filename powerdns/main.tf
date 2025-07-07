@@ -40,3 +40,103 @@ pdns_control notify spark.in
 EOT
   }
   }
+
+
+
+
+
+
+
+CHANGE MASTER TO
+MASTER_HOST='172.31.18.42',
+MASTER_USER='repluser',
+MASTER_PASSWORD='YourNewSecurePassword123!',
+MASTER_LOG_FILE='mysql-bin.000001',
+MASTER_LOG_POS=1234;
+
+
+
+
+
+MariaDB [(none)]> SHOW MASTER STATUS;
++------------------+----------+--------------+------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++------------------+----------+--------------+------------------+
+| mysql-bin.000001 |      328 | powerdns     |                  |
++------------------+----------+--------------+------------------+
+
+
+
+SHOW MASTER STATUS;
++------------------+----------+--------------+------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
++------------------+----------+--------------+------------------+
+| mysql-bin.000001 |      328 | powerdns     |                  |
++------------------+----------+--------------+------------------+
+1 row in set (0.000 sec)
+
+
+CHANGE MASTER TO
+MASTER_HOST='172.31.27.227',
+MASTER_USER='repluser',
+MASTER_PASSWORD='Onetwo@123',
+MASTER_LOG_FILE='mysql-bin.000001',
+MASTER_LOG_POS=328;
+
+
+
+
+
+
+CHANGE MASTER TO
+MASTER_HOST='172.31.25.64',
+MASTER_USER='repluser',
+MASTER_PASSWORD='Onetwo@123',
+MASTER_LOG_FILE='mysql-bin.000001',
+MASTER_LOG_POS=328;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CHANGE MASTER TO
+MASTER_HOST='172.31.27.75',
+MASTER_USER='repluser',
+MASTER_PASSWORD='One@123',
+MASTER_LOG_FILE='mysql-bin.000001',
+MASTER_LOG_POS=328;
+
+
+
+
+
+
+
+
+CHANGE MASTER TO
+MASTER_HOST='172.31.31.59',
+MASTER_USER='repluser',
+MASTER_PASSWORD='One@123',
+MASTER_LOG_FILE='mysql-bin.000001',
+MASTER_LOG_POS=328;
+
+
+
