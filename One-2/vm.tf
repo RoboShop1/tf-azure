@@ -46,6 +46,10 @@ resource "azurerm_linux_virtual_machine" "vm" {
     storage_account_type = "Standard_LRS"
   }
 
+  identity {
+    type = "SystemAssigned"
+  }
+
   source_image_reference {
     publisher = "RedHat"
     offer     = "RHEL"
@@ -54,6 +58,31 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 }
 
+
+
+
+
+
+# resource "null_resource" "main" {
+#   #triggers = {}
+#   provisioner "remote-exec" {
+#     connection {
+#       type     = "ssh"
+#       user     = "azureuser"
+#       password = "Chaithanya1812"
+#       host     = azurerm_linux_virtual_machine.vm.public_ip_address
+#     }
+#     inline = [
+#       "dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm",
+#       "dnf install azure-cli"
+#     ]
+#
+#   }
+# }
+
 output "ip" {
   value = azurerm_linux_virtual_machine.vm.public_ip_address
 }
+
+
+
