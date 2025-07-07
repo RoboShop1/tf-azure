@@ -80,22 +80,24 @@ output "id" {
 
 
 
-# resource "null_resource" "main" {
-#   #triggers = {}
-#   provisioner "remote-exec" {
-#     connection {
-#       type     = "ssh"
-#       user     = "azureuser"
-#       password = "Chaithanya1812"
-#       host     = azurerm_linux_virtual_machine.vm.public_ip_address
-#     }
-#     inline = [
-#       "dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm",
-#       "dnf install azure-cli"
-#     ]
-#
-#   }
-# }
+resource "null_resource" "main" {
+  #triggers = {}
+  provisioner "remote-exec" {
+    connection {
+      type     = "ssh"
+      user     = "azureuser"
+      password = "Chaithanya1812"
+      host     = azurerm_linux_virtual_machine.vm.public_ip_address
+    }
+    inline = [
+      "dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm",
+      "dnf install azure-cli",
+      "firewall-cmd --permanent --add-port=80/tcp",
+      "firewall-cmd --reload"
+    ]
+
+  }
+}
 
 output "ip" {
   value = azurerm_linux_virtual_machine.vm.public_ip_address
