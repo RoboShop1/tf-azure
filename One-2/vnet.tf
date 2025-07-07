@@ -33,6 +33,24 @@ resource "azurerm_network_security_group" "main" {
   }
 }
 
+
+resource "azurerm_application_security_group" "main" {
+  name                = "tf-http"
+  location            = data.azurerm_resource_group.example.location
+  resource_group_name = data.azurerm_resource_group.example.name
+
+  tags = {
+    Hello = "World"
+  }
+}
+
+
+resource "azurerm_network_interface_application_security_group_association" "aasg" {
+  network_interface_id          = azurerm_network_interface.net.id
+  application_security_group_id = azurerm_application_security_group.main.id
+}
+
+
 #
 # resource "azurerm_network_security_rule" "add-sg-rule" {
 #   name                        = "allow-http"
