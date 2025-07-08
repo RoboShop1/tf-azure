@@ -65,11 +65,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
 
 
-resource "azurerm_user_assigned_identity" "example" {
-  location            = data.azurerm_resource_group.example.location
-  name                = "identity1"
-  resource_group_name = data.azurerm_resource_group.example.name
-}
+
 
 
 
