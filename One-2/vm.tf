@@ -77,7 +77,7 @@ output "id" {
 
 
 resource "null_resource" "main" {
-  #triggers = {}
+  # triggers = {}
   provisioner "remote-exec" {
     connection {
       type     = "ssh"
@@ -87,7 +87,7 @@ resource "null_resource" "main" {
     }
     inline = [
       "sudo dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm",
-      "sudo dnf install azure-cli"
+      "sudo dnf install azure-cli -y"
      # "firewall-cmd --permanent --add-port=80/tcp",
      # "firewall-cmd --reload"
     ]
