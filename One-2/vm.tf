@@ -90,8 +90,8 @@ resource "null_resource" "main" {
       host     = azurerm_linux_virtual_machine.vm.public_ip_address
     }
     inline = [
-      "dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm",
-      "dnf install azure-cli"
+      "sudo dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm",
+      "sudo dnf install azure-cli"
      # "firewall-cmd --permanent --add-port=80/tcp",
      # "firewall-cmd --reload"
     ]
