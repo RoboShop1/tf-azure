@@ -37,6 +37,9 @@ resource "azurerm_role_assignment" "example" {
   principal_id         = azuread_service_principal.example.object_id
 }
 
+resource "azuread_service_principal_password" "example" {
+  service_principal_id = azuread_service_principal.example.id
+}
 
 output "application_id" {
   value = azuread_service_principal.example
