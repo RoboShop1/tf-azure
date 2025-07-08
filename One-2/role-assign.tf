@@ -44,6 +44,7 @@ resource "azuread_service_principal_password" "example" {
 
 output "pass" {
   value = azuread_service_principal_password.example
+  sensitive = true
 }
 output "application_id" {
   value = azuread_service_principal.example
