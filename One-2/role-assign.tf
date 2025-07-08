@@ -1,3 +1,4 @@
+
 data "azurerm_key_vault" "keyvault" {
   name                = "roboshop3"
   resource_group_name = data.azurerm_resource_group.example.name
@@ -48,4 +49,12 @@ output "pass" {
 }
 output "application_id" {
   value = azuread_service_principal.example
+}
+
+resource "null_resource" "one" {
+  provisioner "local-exec" {
+    command =<<EOT
+echo ${azuread_service_principal_password.example.value} > /tmp/1.txt
+EOT
+  }
 }
