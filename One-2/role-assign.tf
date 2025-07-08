@@ -36,3 +36,8 @@ resource "azurerm_role_assignment" "example" {
   role_definition_name = "Contributor"
   principal_id         = azuread_service_principal.example.object_id
 }
+
+
+output "application_id" {
+  value = azuread_service_principal.example
+}
