@@ -34,7 +34,7 @@ resource "azuread_service_principal" "example" {
 
 resource "azurerm_role_assignment" "example" {
   scope                = data.azurerm_resource_group.example.id
-  role_definition_name = "Contributor"
+  role_definition_name = "Key Vault Secrets User"
   principal_id         = azuread_service_principal.example.object_id
 }
 
