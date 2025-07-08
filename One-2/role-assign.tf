@@ -41,6 +41,10 @@ resource "azuread_service_principal_password" "example" {
   service_principal_id = azuread_service_principal.example.id
 }
 
+
+output "pass" {
+  value = azuread_service_principal_password.example
+}
 output "application_id" {
   value = azuread_service_principal.example
 }
