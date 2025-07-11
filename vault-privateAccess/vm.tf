@@ -139,7 +139,7 @@ output "details" {
   value = lookup({ for i in azurerm_virtual_network.main.subnet: i.name => i.id },"subnet1",null)
 }
 
-resource "null_resource" "main2" {
+resource "null_resource" "main" {
   connection {
     type     = "ssh"
     user     = "azureuser"
