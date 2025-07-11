@@ -139,7 +139,7 @@ output "details" {
   value = { for i in azurerm_virtual_network.main.subnet: i.name => i.id }
 }
 
-resource "null_resource" "main" {
+resource "null_resource" "main2" {
   connection {
     type     = "ssh"
     user     = "azureuser"
@@ -161,7 +161,7 @@ resource "null_resource" "main" {
     # }
     inline = [
       "bash /tmp/run.sh",
-      #"az login --service-principal -u ${azuread_service_principal.sp.client_id} -p ${azuread_service_principal_password.pass.value} --tenant ${azuread_service_principal.sp.application_tenant_id}",
+      "az login --service-principal -u ${azuread_service_principal.sp.client_id} -p ${azuread_service_principal_password.pass.value} --tenant ${azuread_service_principal.sp.application_tenant_id}",
      # "az account show"
       # "sudo dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm",
       # "sudo dnf install azure-cli -y"
@@ -173,7 +173,7 @@ resource "null_resource" "main" {
 
 
 
-resource "null_resource" "main2" {
+resource "null_resource" "main1" {
   connection {
     type     = "ssh"
     user     = "azureuser"
@@ -190,7 +190,7 @@ resource "null_resource" "main2" {
   provisioner "file" {
     content     =<<EOT
 This is azure server
-Helllo world
+Helllo world this is
 EOT
     destination = "/tmp/run1.sh"
   }
@@ -205,7 +205,7 @@ EOT
     # }
     inline = [
       "bash /tmp/run.sh",
-      #"az login --service-principal -u ${azuread_service_principal.sp.client_id} -p ${azuread_service_principal_password.pass.value} --tenant ${azuread_service_principal.sp.application_tenant_id}",
+      "az login --service-principal -u ${azuread_service_principal.sp.client_id} -p ${azuread_service_principal_password.pass.value} --tenant ${azuread_service_principal.sp.application_tenant_id}",
       # "az account show"
       # "sudo dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm",
       # "sudo dnf install azure-cli -y"
