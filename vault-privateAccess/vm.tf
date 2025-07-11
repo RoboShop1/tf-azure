@@ -173,7 +173,7 @@ resource "null_resource" "main" {
 
 
 
-resource "null_resource" "main1" {
+resource "null_resource" "main2" {
   connection {
     type     = "ssh"
     user     = "azureuser"
@@ -185,6 +185,16 @@ resource "null_resource" "main1" {
     source      = "run.sh"
     destination = "/tmp/run.sh"
   }
+
+
+  provisioner "file" {
+    content     =<<EOT
+This is azure server
+Helllo world
+EOT
+    destination = "/tmp/run1.sh"
+  }
+
   # triggers = {}
   provisioner "remote-exec" {
     # connection {
