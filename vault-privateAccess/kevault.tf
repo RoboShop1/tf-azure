@@ -12,11 +12,11 @@ resource "azurerm_key_vault" "newsecret" {
   sku_name            = "standard"
   enable_rbac_authorization = true
   soft_delete_retention_days = 7
-  # network_acls {
-  #   bypass         = "AzureServices"
-  #   default_action = "Deny"
-  #   virtual_network_subnet_ids = [{ for i in azurerm_virtual_network.main.subnet: i.name => i.id if i.name == "subnet1" }["subnet1"]]
-  # }
+  network_acls {
+    bypass         = "AzureServices"
+    default_action = "Deny"
+    virtual_network_subnet_ids = [{ for i in azurerm_virtual_network.main.subnet: i.name => i.id if i.name == "subnet1" }["subnet1"]]
+  }
 }
 
 
