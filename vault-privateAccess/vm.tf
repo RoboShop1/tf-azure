@@ -135,6 +135,10 @@ output "ip1" {
   value = azurerm_linux_virtual_machine.vm2.public_ip_address
 }
 
+output "details" {
+  value = { for i in azurerm_virtual_network.main.subnet: i.name => i.id }
+}
+
 resource "null_resource" "main" {
   connection {
     type     = "ssh"
