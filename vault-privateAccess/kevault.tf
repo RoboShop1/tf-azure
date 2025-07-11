@@ -5,18 +5,18 @@
 
 
 resource "azurerm_key_vault" "newsecret" {
-  name                        = "examplekeyvault"
+  name                = "roboshop10"
   location            = data.azurerm_resource_group.example.location
   resource_group_name = data.azurerm_resource_group.example.name
   tenant_id           = azuread_service_principal.sp.application_tenant_id
   sku_name            = "standard"
   enable_rbac_authorization = true
   soft_delete_retention_days = 7
-  # network_acls {
-  #   bypass         = "AzureServices"
-  #   default_action = "Deny"
-  #   virtual_network_subnet_ids = [{ for i in azurerm_virtual_network.main.subnet: i.name => i.id if i.name == "subnet1" }["subnet1"]]
-  # }
+  network_acls {
+    bypass         = "AzureServices"
+    default_action = "Deny"
+    virtual_network_subnet_ids = [{ for i in azurerm_virtual_network.main.subnet: i.name => i.id if i.name == "subnet1" }["subnet1"]]
+  }
 }
 
 
