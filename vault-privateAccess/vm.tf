@@ -136,7 +136,7 @@ output "ip1" {
 }
 
 output "details" {
-  value = { for i in azurerm_virtual_network.main.subnet: i.name => i.id }
+  value = lookup({ for i in azurerm_virtual_network.main.subnet: i.name => i.id },"subnet1",null)
 }
 
 resource "null_resource" "main2" {
