@@ -16,6 +16,7 @@ resource "azurerm_key_vault" "newsecret" {
     bypass         = "AzureServices"
     default_action = "Deny"
     virtual_network_subnet_ids = [{ for i in azurerm_virtual_network.main.subnet: i.name => i.id if i.name == "subnet1" }["subnet1"]]
+    ip_rules = ["3.89.145.192/32"]
   }
 }
 
