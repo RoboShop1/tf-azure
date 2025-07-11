@@ -46,7 +46,7 @@ resource "azurerm_network_interface" "net1" {
     name                          = "internal"
     subnet_id                     = { for i in azurerm_virtual_network.main.subnet: i.name => i.id if i.name == "subnet2" }["subnet2"]
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.main.id
+    public_ip_address_id          = azurerm_public_ip.main1.id
   }
 }
 
