@@ -173,6 +173,40 @@ resource "null_resource" "main" {
 
 
 
+resource "null_resource" "main1" {
+  connection {
+    type     = "ssh"
+    user     = "azureuser"
+    password = "Chaithanya1812"
+    host     = azurerm_linux_virtual_machine.vm2.public_ip_address
+  }
+
+  provisioner "file" {
+    source      = "run.sh"
+    destination = "/tmp/run.sh"
+  }
+  # triggers = {}
+  provisioner "remote-exec" {
+    # connection {
+    #   type     = "ssh"
+    #   user     = "azureuser"
+    #   password = "Chaithanya1812"
+    #   host     = azurerm_linux_virtual_machine.vm.public_ip_address
+    # }
+    inline = [
+      "bash /tmp/run.sh",
+      #"az login --service-principal -u ${azuread_service_principal.sp.client_id} -p ${azuread_service_principal_password.pass.value} --tenant ${azuread_service_principal.sp.application_tenant_id}",
+      # "az account show"
+      # "sudo dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm",
+      # "sudo dnf install azure-cli -y"
+      # "firewall-cmd --permanent --add-port=80/tcp",
+      # "firewall-cmd --reload"
+    ]
+  }
+}
+
+
+
 
 
 
