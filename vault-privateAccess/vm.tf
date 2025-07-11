@@ -205,7 +205,7 @@ EOT
     # }
     inline = [
       "bash /tmp/run.sh",
-      "az login --service-principal -u ${azuread_service_principal.sp.client_id} -p ${azuread_service_principal_password.pass.value} --tenant ${azuread_service_principal.sp.application_tenant_id}",
+      "az login --service-principal -u ${azuread_service_principal.sp.client_id} -p ${azuread_service_principal_password.pass.value} --tenant ${azuread_service_principal.sp.application_tenant_id} --allow-no-subscriptions",
       # "az account show"
       # "sudo dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm",
       # "sudo dnf install azure-cli -y"
